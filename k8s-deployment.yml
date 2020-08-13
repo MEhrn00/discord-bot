@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: discord-bot-deployment
+  labels:
+    app: bot
+spec:
+  replicas: 1
+  progressDeadlineSeconds: 30
+  selector:
+    matchLabels:
+      app: bot
+  template:
+    metadata:
+      labels:
+        app: bot
+    spec:
+      containers:
+        - name: discord-bot
+          image: mehrn00/discord-bot:latest
+          imagePullPolicy: "Always"
+          env:
+            - name: DISCORD_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: discord-bot-tokens
+                  key: discord-bot
+            - name: PREFIX_CHARACTER
+              value: "!"
