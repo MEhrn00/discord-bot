@@ -74,7 +74,7 @@ func messageCreate(s *discordgo.Session, m *discordgo.MessageCreate) {
 
 		switch command {
 		case "ping":
-			s.ChannelMessageSend(m.ChannelID, fmt.Sprintf("Pong! %dms", s.HeartbeatLatency()/1000000))
+			s.ChannelMessageSend(m.ChannelID, fmt.Sprintf("Pong! %d ms", s.HeartbeatLatency()/1000000))
 		case "help":
 			commands.HelpHandler(s, m.Message, Prefix)
 		case "kanye":

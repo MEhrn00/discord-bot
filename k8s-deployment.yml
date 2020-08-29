@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: discord-bot
-          image: mehrn00/discord-bot:latest
+          image: mehrn00/discord-bot-docker:latest
           imagePullPolicy: "Always"
           env:
             - name: DISCORD_TOKEN
