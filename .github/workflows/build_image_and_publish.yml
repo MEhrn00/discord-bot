@@ -16,8 +16,7 @@ jobs:
           go-version: 1.15
 
       - name: Build .go files
-        run: go build bot.go
-        run: go build commands/commands.go
+        run: go build bot.go && go build commands/commands.go
 
       - name: Build and publish docker image
         uses: docker/build-push-action@v1
