@@ -5,7 +5,6 @@ name: Build docker image and publish to dockerhub
 jobs:
   build:
     runs-on: ubuntu-latest
-
     - name: Checkout code
       uses: actions/checkout@v2
 
