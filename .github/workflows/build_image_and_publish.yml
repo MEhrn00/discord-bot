@@ -18,6 +18,13 @@ jobs:
       - name: Build .go files
         run: go build bot.go && go build commands/commands.go
 
+      - name: Notification for successful build
+        env:
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
+        uses: ilshidur/action-discord@master
+        with:
+          args: 'Go binaries successfully built'
+
       - name: Build and publish docker image
         uses: docker/build-push-action@v1
         with:
