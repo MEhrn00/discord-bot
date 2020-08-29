@@ -1,14 +1,16 @@
 package main
 
 import (
-	"github.com/MEhrn00/discord-bot/commands"
-	"github.com/bwmarrin/discordgo"
-	"github.com/joho/godotenv"
+	"fmt"
 	"log"
 	"os"
 	"os/signal"
 	"strings"
 	"syscall"
+
+	"github.com/MEhrn00/discord-bot/commands"
+	"github.com/bwmarrin/discordgo"
+	"github.com/joho/godotenv"
 )
 
 var (
@@ -72,7 +74,7 @@ func messageCreate(s *discordgo.Session, m *discordgo.MessageCreate) {
 
 		switch command {
 		case "ping":
-			s.ChannelMessageSend(m.ChannelID, "Pong!")
+			s.ChannelMessageSend(m.ChannelID, fmt.Sprintf("Pong! %dms", s.HeartbeatLatency()/1000000))
 		case "help":
 			commands.HelpHandler(s, m.Message, Prefix)
 		case "kanye":

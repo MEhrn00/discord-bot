@@ -22,7 +22,7 @@ var (
 		},
 		{
 			cmd:  "ping",
-			help: "Pong",
+			help: "Display the latency of the bot",
 		},
 		{
 			cmd:  "kanye",
