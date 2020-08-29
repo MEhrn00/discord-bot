@@ -1,0 +1,27 @@
+on: push
+
+name: Build docker image and publish to dockerhub
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Install Go
+      uses: actions/setup-go@v2
+      with:
+        go-version: 1.15
+
+    - name: Build .go files
+      run: go build bot.go
+      run: go build commands/commands.go
+
+    - name: Build and publish docker image
+      uses: docker/build-push-action@v1
+      with:
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_TOKEN }}
+        repository: mehrn00/discord-bot-docker
+        tags: latest
